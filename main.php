@@ -10,7 +10,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="header"></div>
+    <div id="header">Testheader</div>
     <div id="main"></div>
     <div id="footer"></div>
 </body>
