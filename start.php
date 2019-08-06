@@ -13,6 +13,8 @@
     <script src="scripts/start.js"></script>
 </head>
 <body>
-    <div></div>
+    <div id="header"></div>
+    <div id="main"></div>
+    <div id="footer"></div>
 </body>
 </html>
