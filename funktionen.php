@@ -4,7 +4,7 @@
         error_reporting(E_ALL);
 
             // Zum Aufbau der Verbindung zur Datenbank
-            $db_link = mysqli_connect ('localhost' , 'root' , '' , 'summercamp');
+            $db_link = mysqli_connect ('localhost' , 'root' , '' , 'sommer2019');
 
             mysqli_set_charset($db_link, 'utf8');
 
@@ -33,5 +33,5 @@
     return ($wert);
   }
 
-  
+
 ?>

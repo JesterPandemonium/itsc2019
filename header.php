@@ -5,6 +5,7 @@ if (isset($_SESSION['nutzer'])) {
     $_SESSION['nutzer']='';
     $id='';
 }
+include 'funktionen.php';
 $db_link=startedb();
 
 ?>
@@ -19,7 +20,7 @@ $db_link=startedb();
 
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="height:20%;">
         <a href="index.php">Startseite</a>
         <?php
         if (isset($_POST["logout"])) {
