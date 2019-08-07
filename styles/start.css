@@ -26,6 +26,10 @@ body {
   line-height: 1.5;
   color: #787878;
   background-color: #fff;
+  background-image: url('sachsen.jpg');
+background-size: cover;
+background-width: 100%;
+background-repeat: no-repeat;
 }
 
 p {
