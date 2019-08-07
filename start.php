@@ -30,11 +30,11 @@
                             <div class="offset-lg-2 col-lg-8">
                                 <div class="title-01 title-01--11 text-center">
                                     <h2 class="title__heading">
+										<span>IT</span>
                                         <strong class="hero-section__words">
-                                            <span class="title__effect is-visible">IT</span>
-                                            <span class="title__effect">verstehen</span>
-                                            <span class="title__effect">für</span>
-											<span class="title__effect">alle</span>
+                                            <span class="title__effect is-visible">verstehen</span>
+                                            <span class="title__effect">erforschen</span>
+                                            <span class="title__effect">entwickeln</span>
                                         </strong>
                                     </h2>
                                     <div class="title__description">IT-Kurse Sachsen für alle</div>
