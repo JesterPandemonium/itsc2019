@@ -41,8 +41,9 @@ $db_link=startedb();
 
 
         <?php endif;
-        $id=$_SESSION['nutzer'];
-        $rang=$db_link->query("SELECT rolle FROM nutzer WHERE nid='$id'");
-        $rang2=$rang->fetch_array();
+	
+        //$id=$_SESSION['nutzer'];
+        //$rang=$db_link->query("SELECT rolle FROM nutzer WHERE nid='$id'");
+        //$rang2=$rang->fetch_array();
         ?>
     </div>
