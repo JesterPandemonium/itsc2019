@@ -17,7 +17,6 @@
     </head>
     <body>
         <div class="site" id="page">
-            <a class="skip-link sr-only" href="#main">Skip to content</a>
 
             <!-- Options headline effects: .rotate | .slide | .zoom | .push | .clip -->
             <section class="hero-section hero-section--image clearfix clip">
