@@ -5,17 +5,8 @@ if (isset($_SESSION['nutzer'])) {
     $_SESSION['nutzer']='';
     $id='';
 }
+$db_link=startedb();
 
-function startedb()
-{
-    error_reporting(E_ALL);
-
-        // Zum Aufbau der Verbindung zur Datenbank
-        $db_link = mysqli_connect ('localhost' , 'root' , '' , 'summercamp');
-        mysqli_set_charset($db_link, 'utf8');
-
-        return $db_link;
-}
 ?>
 <!doctype html>
 <html lang="en">
