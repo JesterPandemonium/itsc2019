@@ -1,20 +1,53 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
+    <head>
+        <title>Startseite</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Das wird die Startseite -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600&amp;subset=latin-ext" rel="stylesheet">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Startseite</title>
+        
+			<link rel="stylesheet" type="text/css" href="styles/start.css">
 
-    <link rel="stylesheet" href="styles/start.css">
-    <script src="scripts/start.js"></script>
-</head>
-<body>
-    <div id="header"></div>
-    <div id="main"></div>
-    <div id="footer"></div>
-</body>
+        <script src="scripts/start_1.js"></script>
+        <script src="scripts/start_2.js"></script>
+    </head>
+    <body>
+        <div class="site" id="page">
+
+            <!-- Options headline effects: .rotate | .slide | .zoom | .push | .clip -->
+            <section class="hero-section hero-section--image clearfix clip">
+                <div class="hero-section__wrap">
+                    <div class="hero-section__option">
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="offset-lg-2 col-lg-8">
+                                <div class="title-01 title-01--11 text-center">
+                                    <h2 class="title__heading">
+										<span>IT</span>
+                                        <strong class="hero-section__words">
+                                            <span class="title__effect is-visible">verstehen</span>
+                                            <span class="title__effect">erforschen</span>
+                                            <span class="title__effect">entwickeln</span>
+                                        </strong>
+                                    </h2>
+                                    <div class="title__description">IT-Kurse Sachsen für alle</div>
+									
+                                    <div class="title__action"><a class="btn btn-success">Zur Karte</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <script src="scripts/start_3.js"></script>
+        <script src="scripts/start_4.js"></script>
+    </body>
 </html>
