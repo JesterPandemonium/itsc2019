@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 <head>
-    
+
     <title>Login</title>
 	<link rel="stylesheet" type="text/css" href="styles/login.css">
 </head>
@@ -12,7 +12,7 @@
 				<h3>Anmelden</h3>
 			</div>
 			<div class="card-body">
-				<form>
+				<form method="post">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -27,13 +27,13 @@
 						<input type="password" name="passwort" class="form-control" placeholder="Passwort">
 					</div>
 					<div class="form-group center-block">
-						<input type="submit" value="Login" class="btn float-right login_btn">
+						<input type="submit" name="submit" value="Login" class="btn float-right login_btn">
 					</div>
 				</form>
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center">
-					<a href="#">Passwort vergessen?</a>
+					<a href="Passwort_aendern_anfrage.php">Passwort vergessen?</a>
 				</div>
 			</div>
 		</div>
@@ -63,7 +63,7 @@ if (isset($_POST["submit"])) {
         $id=$db_link->query("SELECT nid FROM nutzer WHERE email='$email' AND passwort='$hash'");
         $id2=$id->fetch_array();
         $_SESSION['nutzer']=$id2['nid'];
-        echo '<meta http-equiv="refresh" content="0; url=index.php">';
+        echo '<meta http-equiv="refresh" content="0; url=start.php">';
       }else {
         echo "<center>E-Mail oder Passwort nicht korrekt!</center>";
       }
