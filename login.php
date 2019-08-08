@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<!-- Hier kommt der Loginbereich hin -->
-
+<?php include 'header.php'; ?>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>Login</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="styles/login.css">
 </head>
-<body>
-    <div id="header"></div>
     <div id="main">
     <div class="container">
 	<div class="d-flex justify-content-center h-100">
@@ -22,34 +12,65 @@
 				<h3>Anmelden</h3>
 			</div>
 			<div class="card-body">
-				<form>
+				<form method="post">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="email" class="form-control" placeholder="Email">
-						
+						<input type="email" name="email" class="form-control" placeholder="Email">
+
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="Passwort">
+						<input type="password" name="passwort" class="form-control" placeholder="Passwort">
 					</div>
 					<div class="form-group center-block">
-						<input type="submit" value="Login" class="btn float-right login_btn">
+						<input type="submit" name="submit" value="Login" class="btn float-right login_btn">
 					</div>
 				</form>
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center">
-					<a href="#">Passwort vergessen?</a>
+					<a href="Passwort_aendern_anfrage.php">Passwort vergessen?</a>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<?php
+if (isset($_POST["submit"])) {
+
+    //Werte aus in Forumlar in Variable abspeichern
+    $email=$_POST["email"];
+    $email=sqlxss($email);
+    //Umwandlung in Hash
+    $passwort=$_POST["passwort"];
+    $hash=hash('sha256',$passwort);
+
+    //Abfrage des Passworts in der DB
+    $db_id=$db_link->query("SELECT nid,passwort FROM nutzer WHERE email='$email'");
+    $db_hash=$db_id->fetch_array();
+
+
+    //Vergleich von Hashwerten
+    if ($hash==$db_hash["passwort"]) {
+      //Ob E-Mail vorhanden
+      $count=$db_id->num_rows;
+      if ($count==1) {
+        //Auslesen der NutzerID, Speichern in SESSION Varible und Weiterleitung
+        $id=$db_link->query("SELECT nid FROM nutzer WHERE email='$email' AND passwort='$hash'");
+        $id2=$id->fetch_array();
+        $_SESSION['nutzer']=$id2['nid'];
+        echo '<meta http-equiv="refresh" content="0; url=start.php">';
+      }else {
+        echo "<center>E-Mail oder Passwort nicht korrekt!</center>";
+      }
+    }else {
+      echo "<center>E-Mail oder Passwort nicht korrekt!</center>";
+    }
+}
+?>
     </div>
-    <div id="footer"></div>
-</body>
-</html>
+<?php include 'footer.php'; ?>

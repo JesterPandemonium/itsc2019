@@ -1,0 +1,54 @@
+.OLmap {
+    height: 500px;
+    width: 500px;
+    position: relative;
+}
+
+.ol-control button:focus {
+    outline: none;
+}
+
+.ol-zoom .ol-zoom-in, .ol-zoom .ol-zoom-out{
+    border-radius: 5px;
+}
+
+.ol-attribution {
+    opacity: 0.5;
+}
+
+#mapOverlay {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    border: 1px solid grey;
+}
+
+.overlayentry {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.overlayentry>* {
+    display: block;
+    padding: 0 3px;
+}
+
+.overlayentry-link {
+    background-color: rgb(50, 132, 255);
+    color: white;
+    border-radius: 5px;
+}
+
+.overlayentry-link:hover {
+    background-color: rgb(0, 81, 202);
+    color: white;
+    text-decoration: none;
+}
+
+th, td {
+    width: 25%;
+    text-align: center;
+}
