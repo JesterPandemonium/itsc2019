@@ -1,16 +1,12 @@
-<?php include 'header.php'; ?>
-
-<!DOCTYPE html>
-<html>
+<?php
+    include 'header.php';
+?>
 <head>
-	<title>Anmelden</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
-    
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="styles/changepwd.css">
 </head>
-<body>
+<div id='main'>
+
+
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
@@ -23,8 +19,8 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="number" name="id" placeholder="ID" class="form-control" required>
-						
+						<input type="email" name="email" placeholder="E-Mail" class="form-control" required>
+
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
@@ -32,14 +28,14 @@
 						</div>
 						<input type="password" name="pw1" placeholder="Neues Passwort" class="form-control" required>
 					</div>
-					
+
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input id = "pw2" type="password" class="form-control" placeholder="Passwort wiederholen">
+						<input id = "pw2" type="password" name="pw2" class="form-control" placeholder="Passwort wiederholen">
 					</div>
-					
+
 					<div class="form-group center-block">
 						<input type="submit" value="Bestätigen" name="submit" class="btn float-right login_btn">
 					</div>
@@ -48,45 +44,53 @@
 		</div>
 	</div>
 </div>
-</body>
-</html>
+</div>
+
 
 <?php
   if (isset($_POST["submit"])) {
 
+    $email=$_POST["email"];  //E-Mail
     $npw=$_POST["pw1"];     //neues Passwort
-    $id=$_POST['id'];       //Id eingabe
-    $time_old=$_SESSION['timeold'];
+    $hash=$_GET["hash"];    //hash url
+    $time_krpyt=$_GET["time"];   //time url
+    $time_krpyt_split = explode('y', $time_krpyt);
+    $time_old = intval($time_krpyt_split[1]);
 
-if ($id!=$_SESSION['randid']) {
-    echo "Unzulässige Id";
-}else {
-    if (strlen($npw)>=6) {
+    $hashdb=$db_link->query("SELECT hash FROM nutzer WHERE email='$email'"); //hash Datenbank
+    $hashdb=$hashdb->fetch_array();
+
+    $hashend = $hashdb['hash'];
 
 
-          if ($_POST["pw1"]==$_POST["pw2"]) {//Überprüfung ob beide Passwörter gleich
 
-                  $npw=hash('sha256',$npw);
-                  $email=$_SESSION['email'];
-                  $db_link->query("UPDATE nutzer SET passwort='$npw' WHERE email='$email' LIMIT 1");//Datenbank neues Passwort zuweisen
-                  echo '<meta http-equiv="refresh" content="0; url=index.php">';
-                  $_SESSION['email']='';
-                  $_SESSION['timeold']='';
-                  $_SESSION['randid']='';
-          }else {
-            echo "Passwörter stimmen nicht überein!";
-          }
 
-    }else {
-          echo "mindestens 6 Zeichen";
-    }
-}
+      if (strlen($npw)>=6) {
 
+
+            if ($_POST["pw1"]==$_POST["pw2"]) {//Überprüfung ob beide Passwörter gleich
+
+                if ($hash==$hashend) {//ob hashes gleich sind
+                    $npw=hash('sha256',$npw);
+                    $update=$db_link->query("UPDATE nutzer SET passwort='$npw' WHERE email='$email' LIMIT 1");//Datenbank neues Passwort zuweisen
+                    echo '<meta http-equiv="refresh" content="0; url=index.php">';
+                }else {
+                  echo "Nicht schummeln:D";
+                }
+
+
+            }else {
+              echo "Passwörter stimmen nicht überein!";
+            }
+
+      }else {
+            echo "mindestens 6 Zeichen";
+      }
   }
 
 ?>
 
 
 <br><br><br><br><br><br><br><br><br><br><br>
-</section>
+
 <?php include 'footer.php'; ?>
