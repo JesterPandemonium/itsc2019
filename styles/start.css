@@ -2173,7 +2173,9 @@ h6, .h6 {
 }
 
 /* --------------------------------
+
 xrotate
+
 -------------------------------- */
 .hero-section.rotate .hero-section__words {
   -webkit-perspective: 300px;
@@ -2282,7 +2284,9 @@ xrotate
 }
 
 /* --------------------------------
+
 xslide
+
 -------------------------------- */
 .hero-section.slide span {
   display: inline-block;
@@ -2378,7 +2382,9 @@ xslide
 }
 
 /* --------------------------------
+
 xzoom
+
 -------------------------------- */
 .hero-section.zoom .hero-section__words {
   -webkit-perspective: 300px;
@@ -2449,7 +2455,9 @@ xzoom
 }
 
 /* --------------------------------
+
 xpush
+
 -------------------------------- */
 .hero-section.push .title__effect {
   opacity: 0;
@@ -2533,7 +2541,9 @@ xpush
 }
 
 /* --------------------------------
+
 xclip
+
 -------------------------------- */
 .hero-section.clip .title__heading > span,
 .hero-section.clip .title__effect {
